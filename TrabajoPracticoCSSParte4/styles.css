@@ -1,0 +1,76 @@
+*{
+padding: 0;
+margin:0;
+font-family: sans, 'Lucida grande', tahoma, verdana, sans-serif;
+font-size: 11px;
+background-color: white;
+color: black;
+}
+#linkList{
+width: 20%;
+float:left;
+}
+#container,#intro,#supportingText{
+width: 80%;
+float: left;
+}
+#pageHeader h1{
+    background-image: url(css_zen_garden.gif);
+    background-repeat: no-repeat;
+    background-position: 10px;
+    text-indent: -9999px;
+    padding: 20px;
+    border:1px black;
+    background-color: #ddd;
+    position:relative;
+    z-index: 2;
+    margin-bottom: -10px;
+}
+#pageHeader h2{
+    background-image: url(zen_h2_back.gif);
+    background-repeat: repeat-x;
+    background-position: top;
+    background-color: #489AED;
+    padding: 15px;
+    border: 1px solid gray;
+    position: relative;
+    z-index: 1;
+}
+#lresources ul{
+    list-style-type: none;
+
+}
+#lresources a{
+    text-decoration: none;
+    background-color: #9cf;
+    font-weight: bold;
+}
+#lresources a:hover{
+    color: #9cf;
+    background-color: #036;
+}
+#larchives ul {
+    list-style-type: none; /* Elimina los bullets */
+    padding-left: 0; /* Elimina el padding predeterminado del navegador */
+    margin: 0; /* Asegúrate de que no haya márgenes adicionales */
+    display: flex; /* Usa flexbox para posicionar los elementos */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
+}
+
+#larchives ul li {
+    margin-right: 10px; /* Espacio entre los elementos */
+}
+
+#larchives ul li:nth-child(3) {
+    flex-basis: 100%; /* Hace que el tercer elemento ocupe toda la línea */
+    margin-top: 10px; /* Espacio adicional arriba */
+}
+#lselect ul{
+    list-style-type: none;
+}
+#lselect ul li{
+    background-image: url(blue_bullet.gif);
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    padding-left: 15px;
+}

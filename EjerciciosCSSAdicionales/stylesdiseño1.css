@@ -1,0 +1,44 @@
+body, html {
+    margin: 0; /*margen del borde hacia afuera*/
+    padding: 0; /*Margen de borde hacia dentro*/
+    height: 100%; /*Ocupa el 100% de la pantalla (alto)*/
+    display: flex; /*Ayuda a colocar las cajas como si fueran celdas de tablas*/
+    flex-direction: column;
+}
+
+.container {
+    display: flex; 
+    flex-direction: column; /*Los organiza en forma de columna o celdas (row)*/
+    height: 100%;
+}
+
+.top {
+    background-color: #777; /*Color del fondo*/
+    text-align: center; /*Alinea el texto del DIV hacia el lugar indicado (top,left,bottom,right,center)*/
+    padding: 20px;
+    flex: 0 0 100px; /* Altura del top */
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+}
+
+.left, .center, .right {
+    background-color: #555;
+    margin: 10px;
+    text-align: center;
+    color: white; /*Color del texto*/
+}
+
+.left {
+    flex: 0 0 200px; /* Ancho de la columna izquierda */
+}
+
+.center {
+    flex: 1;
+}
+
+.right {
+    flex: 0 0 200px; /* Ancho de la columna derecha */
+}
