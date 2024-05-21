@@ -10,7 +10,7 @@ body{
     padding-bottom: 100px;
 }
 #nav{
-    position: relative; right: 60px; /* Flotar a la izquierda */
+    position: relative; right: 60px; /* Posiciona segun otras cajas */
     width: 15%; /* Ancho del 20% */
     background-color: #f4f4f4; /* Fondo gris claro */
     padding: 20px; /* Relleno */
@@ -30,7 +30,7 @@ body{
     border: 1px solid grey;
 }
 #contentinner{
-    position: absolute; /* Flotar a la izquierda */
+    position: absolute; /* posiciona segun parametros*/
     top: 12em;
     right: 1em;
     width: 75%; /* Ancho del 75% */
@@ -38,7 +38,4 @@ body{
     border-top: 2px solid red;
     border-bottom: 2px solid red;
     
-}
-#nav ul{
-
 }
