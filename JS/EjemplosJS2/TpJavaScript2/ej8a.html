@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <title>Ejercicio 8a</title>
+</head>
+<style>
+    body {
+        background-color: grey;
+    }
+</style>
+<body>
+    <ul>
+        <li onmouseover="modificarBlanco()" onmouseout="restaurarColor()">
+            Blanco
+        </li>
+        <li onmouseover="modificarNegro()" onmouseout="restaurarColor()">
+            Negro
+        </li>
+        <li onmouseover="modificarAzul()" onmouseout="restaurarColor()">
+            Azul
+        </li>
+        <li onmouseover="modficarRojo()" onmouseout="restaurarColor()">
+            Rojo
+        </li>
+        <li onmouseover="modificarAmarillo()" onmouseout="restaurarColor()">
+            Amarillo
+        </li>
+    </ul>
+    <script>
+        function modificarBlanco(){
+            var elemento = event.target;
+            elemento.style.backgroundColor = 'white'
+        }
+        function modificarNegro(){
+            var elemento = event.target;
+            elemento.style.backgroundColor = 'black'
+        }
+        function modificarAzul(){
+            var elemento = event.target;
+            elemento.style.backgroundColor = 'blue'
+        }
+        function modficarRojo(){
+            var elemento = event.target;
+            elemento.style.backgroundColor = 'red'
+        }
+        function modificarAmarillo(){
+            var elemento = event.target;
+            elemento.style.backgroundColor = 'yellow'
+        }
+        function restaurarColor(){
+            var elemento = event.target;
+            elemento.style.backgroundColor = ''
+        }
+    </script>
+</body>
+</html>

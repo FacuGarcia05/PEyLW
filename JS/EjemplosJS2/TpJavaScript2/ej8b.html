@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio8b</title>
+    <style>
+        .cerrado {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul id="arbol">
+        <li class="provincia">
+            Neuquén <span class="cerrar">-</span>
+            <ul>
+                <li>Neuquén</li>
+                <li>Zapala</li>
+                <li>San Martin</li>
+                <li>Junin</li>
+            </ul>
+        </li>
+        <li class="provincia">
+            Rio Negro <span class="cerrar">-</span>
+            <ul>
+                <li>Cipolletti</li>
+                <li>Fernandez Oro</li>
+                <li>Roca</li>
+                <li>Cinco Saltos</li>
+                <li>Allen</li>
+            </ul>
+        </li>
+        <li class="provincia">
+            Buenos Aires <span class="cerrar">-</span>
+            <ul>
+                <li>La Plata</li>
+                <li>Mar del Plata</li>
+                <li>Necochea</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        // Obtener todos los elementos con clase "cerrar"
+        var botonesCerrar = document.querySelectorAll('.cerrar');
+
+        // Iterar sobre cada botón de cierre y agregar evento click
+        botonesCerrar.forEach(function(boton) {
+            boton.addEventListener('click', function() {
+                // Encontrar el ul hermano (ciudad) y cambiar su clase
+                var ulCiudad = this.nextElementSibling;
+                ulCiudad.classList.toggle('cerrado');
+
+                // Cambiar el texto del span (botón)
+                if (ulCiudad.classList.contains('cerrado')) {
+                    this.textContent = '+';
+                } else {
+                    this.textContent = '-';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

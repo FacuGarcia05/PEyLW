@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <title>Ejercicio 12</title>
+</head>
+<body>
+    <h1>CHAT</h1>
+    <form id="chat-form">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="mensaje"><br></label>
+        <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+        <button type="submit">Enviar Mensaje</button>
+    </form>
+    <div id="chat-log"></div>
+
+    <script>
+        document.getElementById('chat-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de la manera tradicional
+
+            // Obtener el nombre y el mensaje
+            var nombre = document.getElementById('nombre').value;
+            var mensaje = document.getElementById('mensaje').value;
+
+            // Obtener la fecha y hora actuales
+            var fechaActual = new Date();
+            var fechaFormateada = fechaActual.getDate()  + '/' +
+                                  (fechaActual.getMonth() +1) + '/' +
+                                  fechaActual.getFullYear() + ' ' +
+                                  fechaActual.getHours() + ':' +
+                                  fechaActual.getMinutes() + ':' +
+                                  fechaActual.getSeconds();
+
+            // Crear el mensaje formateado
+            var mensajeFormateado = document.createElement('div');
+            mensajeFormateado.classList.add('message');  //Se usa para agregarla a la clase y poder aplicarle estilos si hubiese CSS
+            mensajeFormateado.innerHTML = fechaFormateada + ' por ' + nombre + '<br>' + mensaje;
+
+            // Agregar el mensaje al log de chat
+            var chatLog = document.getElementById('chat-log');
+            chatLog.appendChild(mensajeFormateado);
+
+            // Limpiar el textarea y posicionar el cursor en él
+            document.getElementById('mensaje').value = '';
+            document.getElementById('mensaje').focus();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ejercicio8c</title>
+</head>
+<body onload="detectarBrowser()">
+    <script>
+        function detectarBrowser(){
+            var browser = navigator.appCodeName;
+
+            if(browser == "Microsoft Internet Explorer"){
+                window.location.replace("http://www.microsoft.com/ie")
+            }else if(browser == "Firefox"){
+                window.location.replace("http://www.mozilla.com/firefox")
+            }else if(browser == "Konkeror"){
+                window.location.replace("http://konqueror.org")
+            }else if(browser == "Mozilla"){
+                window.location.replace("http://www.google.com.ar")
+            }else{
+                alert("Browser desconocido")
+            }
+        }
+    </script>
+</body>
+</html>

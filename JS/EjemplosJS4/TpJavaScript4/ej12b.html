@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Ejercicio 12 tp 4</title>
+</head>
+<style>
+    /* Estilo para cambiar el color a gris */
+    .gray {
+        color: gray;
+    }
+</style>
+</head>
+<body>
+
+<ul id="menu">
+    <li>Menu 1
+        <ul>
+            <li>Item 1
+                <ul>
+                    <li>item A</li>
+                    <li>Item B</li>
+                </ul>
+            </li>
+            <li>Item 2</li>
+        </ul>
+    </li>
+    <li>Menu 2
+        <ul>
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </ul>
+    </li>
+</ul>
+
+<button onclick="listar()">Listar</button>
+
+<script>
+function listar() {
+    // Obtener el elemento ul principal
+    var ul = document.getElementById('menu');
+
+    // Llamar a la función para recorrer los elementos
+    recorrerYCambiarColor(ul);
+}
+
+function recorrerYCambiarColor(elemento) {
+    // Recorrer los nodos hijos del elemento pasado como argumento
+    var hijos = elemento.childNodes;
+    for (var i = 0; i < hijos.length; i++) {
+        var nodo = hijos[i];
+
+        // Ignorar los nodos de tipo texto y solo trabajar con elementos (nodos de tipo 1)
+        if (nodo.nodeType === 1) {
+            // Mostrar contenido en un alert
+            alert(nodo.textContent.trim());
+
+            // Cambiar color a gris
+            nodo.classList.add('gray');
+
+            // Llamar recursivamente para los hijos de este nodo
+            recorrerYCambiarColor(nodo);
+        }
+    }
+}
+</script>
+</body>
+</html>

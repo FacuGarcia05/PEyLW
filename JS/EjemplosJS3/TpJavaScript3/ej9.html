@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 9: Operaciones con String</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .result {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Operaciones con String</h2>
+
+    <label for="mensaje">Ingrese un mensaje:</label><br>
+    <textarea id="mensaje" rows="4" cols="50"></textarea><br><br>
+
+    <button onclick="mostrarMayuscula()">Mostrar en Mayúscula</button>
+    <button onclick="mostrarMinuscula()">Mostrar en Minúscula</button>
+    <button onclick="mostrarSubMensaje()">Mostrar Sub-mensaje</button>
+    <button onclick="buscarHola()">Buscar 'hola' y mostrar</button>
+    <button onclick="eliminarEspacios()">Eliminar Espacios y 'hola'</button>
+    <button onclick="traducirMensaje()">Traducir al Inglés</button>
+
+    <div class="result" id="resultado"></div>
+
+    <script>
+        function mostrarMayuscula() {
+            var mensaje = document.getElementById('mensaje').value;
+            var resultado = mensaje.toUpperCase();
+            document.getElementById('resultado').textContent = resultado;
+        }
+
+        function mostrarMinuscula() {
+            var mensaje = document.getElementById('mensaje').value;
+            var resultado = mensaje.toLowerCase();
+            document.getElementById('resultado').textContent = resultado;
+        }
+
+        function mostrarSubMensaje() {
+            var mensaje = document.getElementById('mensaje').value;
+            var subMensaje = mensaje.substr(4, 10);
+            document.getElementById('resultado').textContent = subMensaje;
+        }
+
+        function buscarHola() {
+            var mensaje = document.getElementById('mensaje').value;
+            if (mensaje.toLowerCase().includes('hola')) {
+                document.getElementById('resultado').textContent = "hola que tal";
+            } else {
+                document.getElementById('resultado').textContent = "La palabra 'hola' no está incluida en el mensaje.";
+            }
+        }
+
+        function eliminarEspacios() {
+            var mensaje = document.getElementById('mensaje').value;
+            var mensajeSinEspacios = mensaje.replace(/\s/g, '');
+            var mensajeSinHola = mensajeSinEspacios.replace(/hola/gi, '');
+            document.getElementById('resultado').textContent = mensajeSinHola;
+        }
+
+        function traducirMensaje() {
+            var mensaje = document.getElementById('mensaje').value;
+            var traducciones = {
+                'mi': 'my',
+                'hola': 'hello',
+                'nombre': 'name'
+                // Agregar más traducciones según sea necesario
+            };
+            var palabras = mensaje.split(/\b/);
+            var resultado = palabras.map(function(palabra) {
+                return traducciones[palabra] || palabra;
+            }).join('');
+            document.getElementById('resultado').textContent = resultado;
+        }
+    </script>
+</body>
+</html>

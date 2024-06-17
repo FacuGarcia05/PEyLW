@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+    <title>ejercicio 7</title>
+</head>
+<body onload="cargarPagina()">
+    <h1>Meses del Año</h1>
+    <ul id="listaMeses"></ul>
+
+    <script>
+        function cargarPagina() {
+            // Array de meses
+            var meses = [
+                "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+            ];
+
+            // Llamar a las funciones para recorrer el array con diferentes bucles
+            recorrerConFor(meses);
+            recorrerConWhile(meses);
+            recorrerConDoWhile(meses);
+            recorrerConForIn(meses);
+        }
+
+        function recorrerConFor(meses) {
+            var ul = document.getElementById("listaMeses");
+            for (var i = 0; i < meses.length; i++) {
+                var li = document.createElement("li");
+                li.textContent = meses[i];
+                ul.appendChild(li);
+            }
+        }
+
+        function recorrerConWhile(meses) {
+            var ul = document.getElementById("listaMeses");
+            var i = 0;
+            while (i < meses.length) {
+                var li = document.createElement("li");
+                li.textContent = meses[i];
+                ul.appendChild(li);
+                i++;
+            }
+        }
+
+        function recorrerConDoWhile(meses) {
+            var ul = document.getElementById("listaMeses");
+            var i = 0;
+            do {
+                var li = document.createElement("li");
+                li.textContent = meses[i];
+                ul.appendChild(li);
+                i++;
+            } while (i < meses.length);
+        }
+
+        function recorrerConForIn(meses) {
+            var ul = document.getElementById("listaMeses");
+            for (var index in meses) {
+                var li = document.createElement("li");
+                li.textContent = meses[index];
+                ul.appendChild(li);
+            }
+        }
+    </script>
+</body>
+</html>

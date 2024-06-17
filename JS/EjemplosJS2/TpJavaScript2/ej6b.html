@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <title>ValorSeleccionado</title>
+</head>
+<body onload="ValorSeleccionado()">
+    <script>
+        function ValorSeleccionado(Valor){
+            var seleccion = prompt("Ingrese un valor")
+            if(seleccion <0){
+                document.write("-1")
+            } else if(seleccion >= 0 && seleccion < 10){
+                document.write("0")
+            }else if(seleccion >= 10 && seleccion < 50){
+                document.write("1")
+            }else if (seleccion >= 50 && seleccion < 100){
+                document.write("2")
+            }else if (seleccion >=100){
+                document.write("3")
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <title>Ejercicio 11b</title>
+</head>
+<body>
+    <button onclick="CalcularEdad()">Ingresar datos</button>
+        <h1>Su edad es: </h1>
+        <p id="edad"></p>
+    <script>
+        function CalcularEdad(){
+            var añoNacimiento = prompt("Ingrese su año de nacimiento");
+            var añoActual = new Date().getFullYear();
+            var edad = añoActual - parseInt(añoNacimiento);
+            if(isNaN(edad) || añoNacimiento === null || añoNacimiento === ""){
+                var resultado = "La fecha ingresada no es valida";
+                document.getElementById("edad").innerText = resultado;
+            } else {
+                document.getElementById("edad").innerText = "Su edad es: "+edad;
+            }
+        }
+    </script>
+</body>
+</html>

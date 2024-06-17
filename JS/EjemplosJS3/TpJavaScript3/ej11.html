@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <title>Ejercicio 11</title>
+</head>
+<body>
+    <h1>Fecha y Hora Actual</h1>
+    <p id="fecha-actual"></p>
+    <h1>Tiempo Restante para el Parcial de JavaScript</h1>
+    <p id="tiempo-restante"></p>
+
+    <script>
+        // Función para actualizar la fecha y hora actual
+        function actualizarFechaActual() {
+            var fechaActual = new Date();
+            var opciones = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: 'numeric', 
+                minute: 'numeric', 
+                second: 'numeric' 
+            };
+            var fechaFormateada = fechaActual.toLocaleDateString('es-ES', opciones);
+            document.getElementById('fecha-actual').innerText = fechaFormateada;
+        }
+
+        // Función para calcular el tiempo restante hasta el parcial
+        function calcularTiempoRestante() {
+            var ahora = new Date();
+            var parcial = new Date(2024, 5, 18, 17, 0, 0); //fecha del parcial (anio/mes/dia) y hora/min/seg
+            var diferencia = parcial - ahora;
+
+            var dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            var horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            var segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            var tiempoRestante = dias + " días, " + horas + " horas, " + minutos + " minutos, " + segundos + " segundos";
+            document.getElementById('tiempo-restante').innerText = tiempoRestante;
+        }
+
+        // Actualizar fecha y tiempo restante cada segundo
+        setInterval(function() {
+            actualizarFechaActual();
+            calcularTiempoRestante();
+        }, 1000);
+
+        // Inicializar la primera actualización
+        actualizarFechaActual();
+        calcularTiempoRestante();
+    </script>
+</body>
+</html>

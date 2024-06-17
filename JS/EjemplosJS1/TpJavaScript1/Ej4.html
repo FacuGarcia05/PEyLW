@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ej4</title>
+    <script>
+        window.onload = function() {
+            // Solicitar datos personales al usuario
+            var nombre = prompt("Ingrese su nombre:");
+            var apellido = prompt("Ingrese su apellido:");
+            var estadoCivil = prompt("Ingrese su estado civil:");
+            var edad = prompt("Ingrese su edad:");
+            var fechaNacimiento = prompt("Ingrese su fecha de nacimiento (dd/mm/yyyy):");
+            var dni = prompt("Ingrese su DNI:");
+
+            // Solicitar confirmación antes de mostrar los datos
+            var confirmacion = confirm("¿Desea mostrar sus datos personales en la página?");
+            if (confirmacion) {
+                // Mostrar los datos personales
+                document.write("<h1>Datos Personales</h1>");
+                document.write("Nombre: " + nombre + "<br>");
+                document.write("Apellido: " + apellido + "<br>");
+                document.write("Estado Civil: " + estadoCivil + "<br>");
+                document.write("Edad: " + edad + "<br>");
+                document.write("Fecha de Nacimiento: " + fechaNacimiento + "<br>");
+                document.write("DNI: " + dni);
+
+                // Mostrar mensaje de confirmación
+                alert("Sus datos han sido impresos.");
+            } else {
+                // Mensaje de cancelación
+                alert("Ha cancelado la visualización de sus datos personales.");
+            }
+        };
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

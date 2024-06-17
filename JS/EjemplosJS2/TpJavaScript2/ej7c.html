@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <title>ejercicio 7c</title>
+</head>
+<body onload="mostrarFuncion()">
+    <h1>Función f(x) = 3x + 5 - x^2</h1>
+    <div id="resultado"></div>
+    <script>
+        function mostrarFuncion(){
+            var resultadoDiv = document.getElementById('resultado');
+            var resultado = '';
+
+            for (var x = 0; x <= 100; x++) {
+                var fx = 3 * x + 5 - x * x;
+                resultado += 'f(' + x + ') = ' + fx + '<br>';
+            }
+            resultadoDiv.innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>

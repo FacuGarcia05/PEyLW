@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <title>Conversor</title>
+</head>
+<body>
+    <h1>Conversor Monetario</h1>
+        <button onclick="convertirPesosDolares()">Pesos a Dólares</button>
+        <button onclick="convertirDolaresPesos()">Dólares a Pesos</button>
+        <button onclick="convertirPesosReales()">Pesos a Reales</button>
+        <button onclick="convertirRealesPesos()">Reales a Pesos</button>
+        <button onclick="convertirPesosEuros()">Pesos a Euros</button>
+        <button onclick="convertirEurosPesos()">Euros a Pesos</button>
+        <h2>RESULTADOS</h2>
+        <textarea id="resultados" rows="10" cols="30" readonly></textarea>
+
+        <script>
+            function convertirPesosDolares(){
+                var conversion = parseFloat(prompt("Ingrese la cantidad a convertir"))
+                var resultado = conversion * 0.0011
+                var mostrar = document.getElementById("resultados");
+                mostrar.value += resultado + "\n";
+            }
+
+            function convertirDolaresPesos(){
+                var conversion = parseFloat(prompt("Ingrese la cantidad a convertir"))
+                var resultado = conversion * 901.94
+                var mostrar = document.getElementById("resultados");
+                mostrar.value += resultado + "\n";
+            }
+
+            function convertirPesosReales(){
+                var conversion = parseFloat(prompt("Ingrese la cantidad a convertir"))
+                var resultado = conversion * 0.0059
+                var mostrar = document.getElementById("resultados");
+                mostrar.value += resultado + "\n";
+            }
+
+            function convertirRealesPesos(){
+                var conversion = parseFloat(prompt("Ingrese la cantidad a convertir"))
+                var resultado = conversion * 168.34
+                var mostrar = document.getElementById("resultados");
+                mostrar.value += resultado + "\n";
+            }
+
+            function convertirPesosEuros(){
+                var conversion = parseFloat(prompt("Ingrese la cantidad a convertir"))
+                var resultado = conversion * 0.0010
+                var mostrar = document.getElementById("resultados");
+                mostrar.value += resultado + "\n";
+            }
+
+            function convertirEurosPesos(){
+                var conversion = parseFloat(prompt("Ingrese la cantidad a convertir"))
+                var resultado = conversion * 965.45
+                var mostrar = document.getElementById("resultados");
+                mostrar.value += resultado + "\n";
+            }
+        </script>
+</body>
+</html>

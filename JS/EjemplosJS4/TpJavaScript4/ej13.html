@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <title>Ejercicio 13</title>
+    <script type="text/javascript" src="scriptej13.js"></script>
+</head>
+<body onload="iniciarTabla()">
+    <table id="tabla" border="1">
+        <tr>
+            <th id="celda">Nombre</th>
+            <th id="2">Telefono</th>
+            <th id="3">Operacion</th>
+        </tr>
+    </table>
+    <br>
+    <form action="#">
+        Nombre <input type="text" id="nombre"><br>
+        Direccion <input type="text" id="direccion"><br>
+        Ciudad <input type="text" id="ciudad"><br>
+        Telefono <input type="text" id="telefono"> <br>
+        <input value="Insertar Fila" type="button" onclick="insertarRow(document.getElementById('nombre').value,document.getElementById('direccion').value,document.getElementById('ciudad').value,document.getElementById('telefono').value);">
+    </form>
+</body>
+</html>
