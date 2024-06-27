@@ -6,8 +6,6 @@ function iniciarTabla(){
     a[3]=["Pedro González","Amaranto Usares 1254","Neuquén Capital","4420444"];
     a[4]=["Verónica Lozano","Saturnino Torres 100","Neuquén Capital","5425842"];
     
-    var tabla = document.getElementById("tabla")
-    
     for(i in a){
         insertarRow(a[i][0],a[i][1],a[i][2],a[i][3],a[i][4]);
     }

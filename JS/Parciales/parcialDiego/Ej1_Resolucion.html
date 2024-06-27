@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+-->
+
+<!-- 
+
+  Cuando se presione el botón de "Jugar" debe ocurrir lo siguiente:
+
+
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Parcial JS </title>
+  <link href="default.css" rel="stylesheet" type="text/css" />
+
+    <script>
+      // Como mi script intenta acceder al botón y al div antes de que esté cargado,
+      // necesito envolver mi función en un evento "DOMContentLoaded" para que se cargue antes de ejecutar el código.  
+      document.addEventListener("DOMContentLoaded", function(){
+
+        var button = document.getElementsByClassName('button')[0];
+        /* los puntos se reinician cada vez que se hace click en el botón, por lo que debo acumularlos fuera de la función de evento 'click' */
+        var puntosLaura = 0;
+        var puntosJorgelina = 0;
+        var puntosAlejandra = 0;
+        button.addEventListener("click", function(){
+          let result = '';
+            const numeros = '0123456789';
+            let counter = 0;
+            while (counter <= 1) {
+              result += numeros.charAt(Math.floor(Math.random() * numeros.length));
+              counter += 1;
+            }
+            /* En #ultimaBolilla debe aparecer un numero aleatorio entre el 0 y el 99 */
+            
+            var divUltBolilla = document.getElementById("ultimaBolilla");
+            
+            divUltBolilla.innerText = result; /* funciona con innerText, innerHTML, textContent */
+            
+            /* Si el número que apareció está en el cartón de alguna de las jugadoras, 
+            el mismo debe pintarse de otro color, por ejemplo azul oscuro */
+            
+            // var numsLaura = document.querySelectorAll('#tira-laura .cuadrado');
+            let numsTotales = document.getElementsByClassName("cuadrado");
+            let numsLaura = document.querySelectorAll("#tira-laura .cuadrado");
+            let numsJorgelina = document.querySelectorAll("#tira-jorgelina .cuadrado");
+            let numsAlejandra = document.querySelectorAll("#tira-alejandra .cuadrado");
+            
+            
+          
+            var bingoLleno = false;
+            var i = 0;
+            // alert(numsLaura[1].textContent);
+            while(i < 99 && !bingoLleno){
+              
+              numsLaura.forEach(element => {
+                // si elemento (un div ".cuadrado") tiene el mismo contenido que result Y NO está en azul
+                if(element.textContent == result && element.style.backgroundColor != 'blue'){
+                  puntosLaura++;
+                  element.style.backgroundColor = 'blue';
+                  if(puntosLaura == 10){
+                    document.getElementById('vaGanando').textContent = "ganó Laura.";
+                    bingoLleno = true;  
+                  }
+                }
+              });
+              numsJorgelina.forEach(element => {
+                // si elemento (un div ".cuadrado") tiene el mismo contenido que result Y NO está en azul
+                if(element.textContent == result && element.style.backgroundColor != 'blue'){
+                  puntosJorgelina++;
+                  element.style.backgroundColor = 'blue';
+                  if(puntosJorgelina == 10){
+                    document.getElementById('vaGanando').textContent = "ganó Jorgelina.";
+                    bingoLleno = true;  
+                  }
+                }
+              });
+              numsAlejandra.forEach(element => {
+                // si elemento (un div ".cuadrado") tiene el mismo contenido que result Y NO está en azul
+                if(element.textContent == result && element.style.backgroundColor != 'blue'){
+                  puntosAlejandra++;
+                  element.style.backgroundColor = 'blue';
+                  if(puntosAlejandra == 10){
+                    document.getElementById('vaGanando').textContent = "ganó Alejandra.";
+                    bingoLleno = true;  
+                    
+                  }
+                }
+              });
+              /* El sistema debe decir además, que jugadora va ganando. 
+                        Si hay empate, debe decir "empate" */
+              if(!bingoLleno){
+                if(puntosLaura > puntosAlejandra && puntosLaura > puntosJorgelina){
+                  document.getElementById('vaGanando').textContent = "va ganando Laura con "+puntosLaura+" puntos.";
+                }else if(puntosJorgelina > puntosLaura && puntosJorgelina > puntosAlejandra){
+                  document.getElementById('vaGanando').textContent = "va ganando Jorgelina con "+puntosJorgelina+" puntos.";
+                }else if(puntosAlejandra > puntosLaura && puntosAlejandra > puntosJorgelina){
+                  document.getElementById('vaGanando').textContent = "va ganando Alejandra con "+puntosAlejandra+" puntos.";
+                }else if(puntosLaura == puntosAlejandra || puntosJorgelina == puntosLaura || puntosAlejandra == puntosJorgelina){
+                  document.getElementById('vaGanando').textContent = "empate";
+                }
+              }else{
+                /* Si alguna jugadora obtiene todos sus numeros, debe decir "Ganó YYY" 
+                (donde YYY es el nombre de la ganadora). Además se debe bloquear el botón "Jugar" */
+                button.disabled = true;
+                button.style.backgroundColor = 'red';
+
+              }
+              i++;
+            }
+        }
+      );   
+    })
+    </script>
+
+
+</head>
+
+<body>
+    <div id="header">
+        <div id="logo" style="margin-left: 15px">
+            <h1><a href="#">Programación Estática y Laboratorio Web</a></h1>
+            <h2><a href="#">Recuperatorio JS Ejercicio 1</a></h2>
+        </div>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="Ej1_Consigna.html">Consigna</a></li>
+            <li><a href="Ej1_Resolucion.html">HOJA Ejercicio</a></li>
+        </ul>
+    </div>
+    <div id="content;width: 100%;">
+
+      <table style="width: 60%;margin: auto;" >
+<tr>
+  <td>
+    <div style="text-align: center;">
+      <br><br> 
+    <div class="square" id="ultimaBolilla">0</div>
+  
+    <br/>
+    <button class="button">Jugar</button>      
+
+  </div>
+    <br/>
+    <div id="vaGanando" style="font-size: 48px;background-color: lightgreen; border: 1px solid black;padding: 10px;text-align: center;">
+      Empate
+    </div>
+    <br/><br/>
+  </td>
+
+
+  <td>
+   
+    <div class="tira-container">
+      <div class="titulo">Bingo Laura</div>
+      <div class="tira-numeros" id="tira-laura">
+          <div class="cuadrado">07</div>
+          <div class="cuadrado">22</div>
+          <div class="cuadrado">35</div>
+          <div class="cuadrado">49</div>
+          <div class="cuadrado">58</div>
+          <div class="cuadrado">63</div>
+          <div class="cuadrado">71</div>
+          <div class="cuadrado">85</div>
+          <div class="cuadrado">89</div>
+          <div class="cuadrado">91</div>
+      </div>
+    </div>
+
+    <div class="tira-container">
+      <div class="titulo">Bingo Jorgelina</div>
+      <div class="tira-numeros" id="tira-jorgelina">
+          <div class="cuadrado">05</div>
+          <div class="cuadrado">18</div>
+          <div class="cuadrado">27</div>
+          <div class="cuadrado">35</div>
+          <div class="cuadrado">44</div>
+          <div class="cuadrado">52</div>
+          <div class="cuadrado">69</div>
+          <div class="cuadrado">78</div>
+          <div class="cuadrado">85</div>
+          <div class="cuadrado">91</div>
+      </div>
+  </div>
+
+  <div class="tira-container">
+    <div class="titulo">Bingo Alejandra</div>
+    <div class="tira-numeros" id="tira-alejandra">
+        <div class="cuadrado">02</div>
+        <div class="cuadrado">13</div>
+        <div class="cuadrado">24</div>
+        <div class="cuadrado">39</div>
+        <div class="cuadrado">49</div>
+        <div class="cuadrado">57</div>
+        <div class="cuadrado">66</div>
+        <div class="cuadrado">78</div>
+        <div class="cuadrado">89</div>
+        <div class="cuadrado">91</div>
+    </div>
+  </div>
+
+
+
+  </td>
+</tr>
+</table>
+
+
+
+
+    </div>
+    <div id="footer" style="margin-top: 240px;">
+        <p id="legal">Copyright &copy; AtomoHost. All Rights Reserved.
+            Designed by <a href="http://www.freecsstemplates.org/">Free CSS
+                Templates</a>.</p>
+        <p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms
+                of Use</a></p>
+    </div>
+    <br />
+    <br />
+</body>
+
+</html>
