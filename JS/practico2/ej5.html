@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica</title>
+</head>
+
+<body>
+    <div id="saludo"></div>
+
+    <button id="suma">Suma</button>
+    <button id="resta">Resta</button>
+    <button id="multiplicacion">Multiplicar</button>
+    <button id="division">Dividir</button>
+    <button id="potencia">Potencia</button>
+    <button id="raiz">Cuadrado</button>
+    <br>
+    <h3>Resultados:</h3>
+    <textarea name="resultadoTxt" id="resultadoTxt" cols="40" rows="10"></textarea>
+    <br><br>
+
+    <h3>Conversor:</h3>
+    <input type="text" name="pesos" id="pesosARS" placeholder="Pesos argentinos">
+    <button onclick="p2d()">Convertir</button>
+    <label>Dólares:</label>
+    <label id="conversion1" style="border-bottom: 1px solid red;"></label>
+    <br><br>
+    <input type="text" name="dolar" id="dolarOfi" placeholder="Dólar">
+    <button onclick="d2p()">Convertir</button>
+    <label>Pesos ARS:</label>
+    <label id="conversion2" style="border-bottom: 1px solid red;"></label>
+    <br><br>
+    <input type="text" name="pesitos" id="pesosARG" placeholder="Pesos argentinos">
+    <button onclick="r2p()">Convertir</button>
+    <label>Reales:</label>
+    <label id="conversion3" style="border-bottom: 1px solid red;"></label>
+    <br><br>
+    <input type="text" name="pesotes" id="pesosARGS" placeholder="Pesos argentinos">
+    <button onclick="e2p()">Convertir</button>
+    <label>Euros:</label>
+    <label id="conversion4" style="border-bottom: 1px solid red;"></label>
+    <script src="../saludo.js"></script>
+    <script src="ej5b.js"></script>
+    <script src="ej5c.js"></script>
+</body>
+
+</html>

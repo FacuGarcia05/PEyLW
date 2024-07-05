@@ -7,7 +7,7 @@ function validar() {
     var dia = document.getElementById('dia');
     var mes = document.getElementById('mes');
     var anio = document.getElementById('anio');
-    var observaciones = document.getElementById('observaciones');
+    //(no se utiliza) var observaciones = document.getElementById('observaciones');
     var errores = false;
     Estilos([dia, mes, anio, email, nombre, apellido, obrasSociales]);
 

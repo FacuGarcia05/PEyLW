@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Parcial JS </title>
+  <link href="default.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon">
+</head>
+
+<body>
+  <div id="header">
+    <div id="logo" style="margin-left: 15px">
+      <h1><a href="#">Programación Estática y Laboratorio Web</a></h1>
+      <h2><a href="#">Recuperatorio JS Ejercicio 1</a></h2>
+    </div>
+  </div>
+  <div id="menu">
+    <ul>
+      <li><a href="Ej1_Consigna.html">Consigna</a></li>
+      <li><a href="Ej1_Resolucion.html">HOJA Ejercicio</a></li>
+    </ul>
+  </div>
+  <div id="content;width: 100%;">
+    <table style="width: 60%;margin: auto;">
+      <tr>
+        <td>
+          <div style="text-align: center;">
+            <br><br>
+            <div class="square" id="ultimaBolilla">0</div>
+
+            <br />
+            <button class=" button" id="jugarbtn" onclick="numeroRandom()">Jugar</button>
+          </div>
+          <br />
+          <div id="vaGanando"
+            style="font-size: 35px;background-color: lightgreen; border: 1px solid black;padding: 10px;text-align: center;">
+            Empate
+          </div>
+          <br /><br />
+        </td>
+        <td>
+          <div class="tira-container">
+            <div class="titulo">Bingo Laura</div>
+            <div class="tira-numeros" id="tira-laura">
+              <div class="cuadrado">07</div>
+              <div class="cuadrado">22</div>
+              <div class="cuadrado">35</div>
+              <div class="cuadrado">49</div>
+              <div class="cuadrado">58</div>
+              <div class="cuadrado">63</div>
+              <div class="cuadrado">71</div>
+              <div class="cuadrado">85</div>
+              <div class="cuadrado">89</div>
+              <div class="cuadrado">91</div>
+            </div>
+          </div>
+          <div class="tira-container">
+            <div class="titulo">Bingo Jorgelina</div>
+            <div class="tira-numeros" id="tira-jorgelina">
+              <div class="cuadrado">05</div>
+              <div class="cuadrado">18</div>
+              <div class="cuadrado">27</div>
+              <div class="cuadrado">35</div>
+              <div class="cuadrado">44</div>
+              <div class="cuadrado">52</div>
+              <div class="cuadrado">69</div>
+              <div class="cuadrado">78</div>
+              <div class="cuadrado">85</div>
+              <div class="cuadrado">91</div>
+            </div>
+          </div>
+          <div class="tira-container">
+            <div class="titulo">Bingo Alejandra</div>
+            <div class="tira-numeros" id="tira-alejandra">
+              <div class="cuadrado">02</div>
+              <div class="cuadrado">13</div>
+              <div class="cuadrado">24</div>
+              <div class="cuadrado">39</div>
+              <div class="cuadrado">49</div>
+              <div class="cuadrado">57</div>
+              <div class="cuadrado">66</div>
+              <div class="cuadrado">78</div>
+              <div class="cuadrado">89</div>
+              <div class="cuadrado">91</div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="footer" style="margin-top: 240px;">
+    <p id="legal">Copyright &copy; AtomoHost. All Rights Reserved.
+      Designed by <a href="http://www.freecsstemplates.org/">Free CSS
+        Templates</a>.</p>
+    <p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms
+        of Use</a></p>
+  </div>
+  <br />
+  <br />
+
+  <script>
+    const ultBolli = document.getElementById('ultimaBolilla')
+
+    function numeroRandom() {
+      let resultado = Math.floor(Math.random() * 100)
+      ultBolli.innerHTML = resultado < 10 ? '0' + resultado : resultado // me rompe el toc que aparezcan sin el 0
+      jugar(resultado)
+      return resultado
+    }
+
+    const numLaura = document.querySelectorAll('#tira-laura .cuadrado')
+    const numJorgelina = document.querySelectorAll('#tira-jorgelina .cuadrado')
+    const numAle = document.querySelectorAll('#tira-alejandra .cuadrado')
+    const ganadora = document.getElementById('vaGanando')
+    // const boton = document.getElementById('jugarbtn').disa
+
+    let contadorLaura = 0
+    let contadorJorgelina = 0
+    let contadoraAle = 0
+    let hayGanadora = false
+
+    // para cambiar color cuando coincidan
+    function jugar(num) {
+      const display = document.createElement('div')
+      let msj = ''
+      let numeroCarton = false // bandera para ver si esta
+
+      numLaura.forEach(numeroL => {
+        if (parseInt(numeroL.textContent) === num && numeroL.style.backgroundColor !== 'red') {
+          numeroL.style.backgroundColor = 'red'
+          contadorLaura++
+          numeroCarton = true
+        }
+      })
+
+      numJorgelina.forEach(numeroJ => {
+        if (parseInt(numeroJ.textContent) === num && numeroJ.style.backgroundColor !== 'red') {
+          numeroJ.style.backgroundColor = 'red'
+          contadorJorgelina++
+          numeroCarton = true
+        }
+      })
+
+      numAle.forEach(numeroA => {
+        if (parseInt(numeroA.textContent) === num && numeroA.style.backgroundColor !== 'red') {
+          numeroA.style.backgroundColor = 'red'
+          contadoraAle++
+          numeroCarton = true
+        }
+      })
+
+      if (contadorLaura > contadorJorgelina && contadorLaura > contadoraAle) {
+        msj = 'Laura va ganando'
+      } else if (contadorJorgelina > contadorLaura && contadorJorgelina > contadoraAle) {
+        msj = 'Jorgelina va ganando'
+      } else if (contadoraAle > contadorLaura && contadoraAle > contadorJorgelina) {
+        msj = 'Alejandra va ganando'
+      } else if (contadorLaura === contadorJorgelina && contadorLaura === contadoraAle || contadorJorgelina === contadorLaura && contadorJorgelina === contadoraAle || contadoraAle === contadorLaura && contadoraAle === contadorJorgelina) {
+        msj = 'Empate'
+      } else if (!numeroCarton) {
+        // no hace nada
+        return
+      } else {
+        msj = 'Empate'
+      }
+      ganadora.innerHTML = msj
+
+      let msjGanadora
+      if (contadorLaura === numLaura.length) {
+        msjGanadora = 'Ganó Laura!!'
+        hayGanadora = true
+      }
+      if (contadorJorgelina === numJorgelina.length) {
+        msjGanadora = 'Ganó Jorgelina!!'
+        hayGanadora = true
+      }
+      if (contadoraAle === numAle.length) {
+        msjGanadora = 'Ganó Alejandra!!'
+        hayGanadora = true
+      }
+
+      if (hayGanadora) {
+        const felicidades = document.createTextNode(msjGanadora)
+        display.appendChild(felicidades)
+        ganadora.innerHTML = ''
+        ganadora.appendChild(display)
+        document.getElementById('jugarbtn').disabled = true
+        document.getElementById('jugarbtn').style.backgroundColor = 'gray'
+      }
+
+    }
+
+    ultBolli.addEventListener('click', jugar)
+  </script>
+</body>
+
+</html>
