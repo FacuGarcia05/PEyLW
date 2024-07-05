@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Parcial JS </title>
+    <link href="default.css" rel="stylesheet" type="text/css" />
+
+    <script>
+        //({}) 
+
+        function jugar(){
+            var slot1 = document.getElementById('slot1');
+            var slot2 = document.getElementById('slot2');
+            var slot3 = document.getElementById('slot3');
+            var resultado = document.getElementById('ultimoResultado');
+            var saldo = parseInt(document.getElementById('saldoRestante').innerText);
+            var button = document.querySelector('button');
+
+            //En slot1, slot2 y slot3 deben aparecer automáticamente tres números aleatorios entre el 0 y el 9
+            resultado1 = Math.floor(Math.random() * 10);
+            resultado2 = Math.floor(Math.random() * 10);
+            resultado3 = Math.floor(Math.random() * 10);
+            slot1.innerHTML = resultado1;
+            slot2.innerHTML = resultado2;
+            slot3.innerHTML = resultado3;
+
+            //Si los tres son distintos entre si, se restan 4.000 dólares del saldo y en ultimoResultado debe decir "Ud. Perdió 4.000"
+            if(resultado1 != resultado2 && resultado1 != resultado3 && resultado2 != resultado3){
+                document.getElementById('saldoRestante').innerText = saldo- 4000;
+                resultado.innerHTML = "Usted perdio 4.000";
+                slot1.style.backgroundColor = 'lightgrey';
+                slot2.style.backgroundColor = 'lightgrey';
+                slot3.style.backgroundColor = 'lightgrey';
+            //Si hay dos iguales (en cualquier combinacion), se pintan los iguales del mismo color de fondo celeste claro, se suman 8.000 dólares al saldo y en ultimoResultado debe decir "Ud. ganó 8.000"    
+            } else if(resultado1 == resultado2 && resultado1 != resultado3){
+                document.getElementById('saldoRestante').innerText = saldo + 8000;
+                resultado.innerHTML = "Usted  gano 8.000";
+                slot1.style.backgroundColor = 'lightblue';
+                slot2.style.backgroundColor = 'lightblue';
+                slot3.style.backgroundColor = 'lightgrey';
+            }else if(resultado1 == resultado3 && resultado1 != resultado2){
+                document.getElementById('saldoRestante').innerText = saldo + 8000;
+                resultado.innerHTML = "Usted  gano 8.000";
+                slot1.style.backgroundColor = 'lightblue';
+                slot2.style.backgroundColor = 'lightgrey';
+                slot3.style.backgroundColor = 'lightblue';
+            }else if(resultado2 == resultado3 && resultado2 != resultado1){
+                document.getElementById('saldoRestante').innerText = saldo + 8000;
+                resultado.innerHTML = "Usted  gano 8.000";
+                slot1.style.backgroundColor = 'lightgrey';
+                slot2.style.backgroundColor = 'lightblue';
+                slot3.style.backgroundColor = 'lightblue';
+            //Si los tres son iguales, se pintan los tres de color verde claro, se suman 40.000 dólares al saldo y en ultimoResultado debe decir "JACKPOT!!!"
+            }else if(resultado1 = resultado2 && resultado1 == resultado2 && resultado1 == resultado3){
+                document.getElementById('saldoRestante').innerText = saldo + 40000;
+                resultado.innerHTML = "¡JACKPOT!"
+                slot1.style.backgroundColor = 'lightgreen';
+                slot2.style.backgroundColor = 'lightgreen';
+                slot3.style.backgroundColor = 'lightgreen';
+            }
+            //Si el saldo se vuelve cero, en ultimoResultado debe aparecer "Lo perdiste TODO. Andá a estudiar para el parcial mejor." Y debe bloquearse el botón jugar.
+            if(document.getElementById('saldoRestante').innerText <= 0){
+                document.getElementById('saldoRestante').innerText = 0;
+                resultado.innerHTML = "Lo perdiste TODO. Anda a estudiar para el parcial mejor."
+                button.disabled = true;
+                button.style.backgroundColor = 'red';
+            }
+        }
+
+
+    </script>
+
+
+</head>
+
+<body>
+    <div id="header">
+        <div id="logo" style="margin-left: 15px">
+            <h1><a href="#">Programación Estática y Laboratorio Web</a></h1>
+            <h2><a href="#">Recuperatorio JS Ejercicio 1</a></h2>
+        </div>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="Ej1_Consigna.html">Consigna</a></li>
+            <li><a href="Ej1_Resolucion.html">HOJA Ejercicio</a></li>
+        </ul>
+    </div>
+    <div id="content">
+
+
+
+      <div class="square" id="slot1">0</div>
+      <div class="square" id="slot2">0</div>
+      <div class="square" id="slot3">0</div>
+      
+      <br/>
+      <button class="button" onclick="jugar()">Jugar</button>      
+      <br/>
+      <br/><br/>
+      <br/><br/>
+
+
+      Saldo Restante $:
+      <div id="saldoRestante" style="font-size: 48px;background-color: lightgreen; border: 1px solid black;padding: 10px;">
+        50000
+      </div>
+
+      <br>
+
+      Ultimo Resultado:
+        <div id="ultimoResultado" style="font-size: 48px;background-color: lightblue; border: 1px solid black;padding: 10px;">
+          ¡Empiece a jugar!
+        </div>
+        <br />
+
+   
+        <br />
+
+
+
+
+
+        </div>
+
+
+        </table>
+
+    </div>
+    <div id="footer" style="margin-top: 240px;">
+        <p id="legal">Copyright &copy; AtomoHost. All Rights Reserved.
+            Designed by <a href="http://www.freecsstemplates.org/">Free CSS
+                Templates</a>.</p>
+        <p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms
+                of Use</a></p>
+    </div>
+    <br />
+    <br />
+</body>
+
+</html>
